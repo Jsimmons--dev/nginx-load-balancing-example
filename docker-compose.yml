@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  load-balancer:
+    image: jsimmons/nginx-loadbalancer
+    ports:
+    - "8081:80"
+    depends_on:
+    - server1
+    - server2
+  server1:
+    image: jsimmons/nginx-message
+    ports:
+    - "8000:80"
+  server2:
+    image: jsimmons/nginx-message2
+    ports:
+    - "8001:80"
